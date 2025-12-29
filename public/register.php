@@ -108,9 +108,9 @@ session_start();
             {
                 $formErrors['email'] = "L'email est obligatoire.";
             }
-            else if( mb_strlen($_POST['email']) > 255 )
+            else if( mb_strlen($_POST['email']) > 180 )
             {
-                $formErrors['email'] = "L'email ne doit pas dépasser 255 caractères.";
+                $formErrors['email'] = "L'email ne doit pas dépasser 180 caractères.";
             }
             else if( !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ) // Permet de valider le format de l'email
             {

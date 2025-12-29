@@ -9,7 +9,7 @@
     {
         try 
         {
-            $dbDsn = 'mysql:dbname=dwwm20-php-auth;host=127.0.0.1;port=3306';
+            $dbDsn = 'mysql:dbname=dwwm22-auth;host=127.0.0.1;port=3306';
             $dbUser = 'root';
             $dbPassword = '';
             

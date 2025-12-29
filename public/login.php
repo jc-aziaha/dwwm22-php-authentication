@@ -124,7 +124,7 @@ session_start();
         if ( $request->rowCount() != 1 ) 
         {
             // Générer le message d'erreur
-            $_SESSION['badCredentials'] = "Les identifiants sont invalides.";
+            $_SESSION['bad_credentials'] = "Les identifiants sont invalides.";
             $_SESSION['old'] = $_POST;
             return header("Location: login.php");
         }
@@ -138,7 +138,7 @@ session_start();
         if ( !password_verify($_POST['password'], $user['password']) ) 
         {
             // Générer le message d'erreur
-            $_SESSION['badCredentials'] = "Les identifiants sont invalides.";
+            $_SESSION['bad_credentials'] = "Les identifiants sont invalides.";
             $_SESSION['old'] = $_POST;
             return header("Location: login.php");
         }
@@ -190,11 +190,11 @@ session_start();
                             <?php unset($_SESSION['formErrors']); ?>
                         <?php endif ?>
 
-                        <?php if(isset($_SESSION['badCredentials']) && !empty($_SESSION['badCredentials'])) : ?>
+                        <?php if(isset($_SESSION['bad_credentials']) && !empty($_SESSION['bad_credentials'])) : ?>
                             <div class="alert alert-danger text-center" role="alert">
-                                <?= $_SESSION['badCredentials'] ?>
+                                <?= $_SESSION['bad_credentials'] ?>
                             </div>
-                            <?php unset($_SESSION['badCredentials']); ?>
+                            <?php unset($_SESSION['bad_credentials']); ?>
                         <?php endif ?>
             
                         <!-- Form -->
