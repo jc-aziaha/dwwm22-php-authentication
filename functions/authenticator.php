@@ -36,19 +36,29 @@
      */
     function getUser(PDO $db): array|null
     {
+        // Vérifions si s'il existe un utilisateur dont les informations ont été sauvegardées en session
+        // Si ce n'est pas le cas,
         if ( !isset($_SESSION['auth']) || empty($_SESSION['auth']) ) 
         {
+            // Alors, la fonction retourne null pour indiquer que l'utilisateur n'a pas été trouvé.
             return null;
         }
 
+        // Dans le cas contraire,
+        // Vérifions tout de même, si l'identifiant de l'utilisateur présent dans la session, existe bel et bien en base de données.
         $request = $db->prepare("SELECT * FROM user WHERE id=:id");
         $request->bindValue(":id", $_SESSION['auth']['id']);
         $request->execute();
 
+
+        // S'il n'existe pas
         if ($request->rowCount() != 1) 
         {
+            // Alors, la fonction retourne null pour indiquer que l'utilisateur n'a pas été trouvé.
             return null;
         }
         
+        // Dans le cas contraire,
+        // Retourner les informations de ce dernier.
         return $request->fetch();
     }
